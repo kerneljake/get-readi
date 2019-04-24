@@ -20,17 +20,17 @@ try:
 except:
     pass
 
-#try:
-client.create_index([
-        TextField('group'),
-        TextField('code'),
-        TagField('type'),
-        TextField('qty'),
-        TextField('days'),
-        TextField('search')
-        ])
-#except:
-#    pass
+try:
+    client.create_index([
+            TextField('group', no_stem=True),
+            TextField('code', no_stem=True),
+            TagField('type'),
+            TextField('qty', no_stem=True),
+            TextField('days', no_stem=True),
+            TextField('search', no_stem=True)
+            ])
+except:
+    pass
 
 # load JSON from stdin or file
 sys.argv.pop(0)
