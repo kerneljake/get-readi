@@ -1,0 +1,44 @@
+{
+  "$schema": "http:\/\/json-schema.org\/draft-03\/schema",
+
+  "type": "object",
+  "properties": {
+
+    "id": {
+	"type": "string",
+	"ipsum": "id"
+    },
+
+    "group": { 
+	"type": "string",
+	"ipsum": "fname" 
+    },
+
+    "code": {
+	"type": "integer",
+	"minimum": 65800000000,
+	"maximum": 65900000000
+    },
+
+    "type": {
+	"type": "integer",
+	"enum": [ 0,1,2,3,4,5,6,7,8,9 ]
+    },
+
+    "qty": { 
+	"type": "integer",
+	"enum": [ 5, 7, 10, 12, 15, 30, 90, 120 ]
+    },
+
+    "days": {
+	"type": "string",
+	"enum": [ "005", "007", "010", "030", "090", "120" ]
+    },
+
+    "search": {
+	"type": "string",
+	"ipsum": "word"
+    }
+
+  }
+}
