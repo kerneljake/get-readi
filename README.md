@@ -8,13 +8,16 @@ clone ipsum:
 
 generate dummy data with shape file and load it into Redis:
 
-`python ~/ipsum/pygenipsum.py --count 10000 shape.jsch | ./import.py`
+`python ipsum/pygenipsum.py --count 10000 shape.jsch | ./import.py`
 
 ### java
 
 compile:
 
-`mvn compile assembly:single`
+```
+cd my-app
+mvn compile assembly:single
+```
 
 run:
 
