@@ -9,9 +9,16 @@
 # Warning: this script will drop an existing schema (and hence database)!
 
 from redisearch import Client, TextField, NumericField, TagField, Query
-import sys, json, fileinput
+import sys, json
+import argparse
 
-client = Client('myIndex')
+parser = argparse.ArgumentParser(description='bulk importer.', add_help=False)
+parser.add_argument('--host', '-h', help='endpoint host', default='localhost')
+parser.add_argument('--port', '-p', help='endpoint port', type=int, default=6379)
+parser.add_argument('--infile', nargs='?', type=argparse.FileType('r'), default=sys.stdin)
+args = parser.parse_args()
+
+client = Client('myIndex', args.host, args.port)
 batch = client.BatchIndexer(client, chunk_size=1000)
 
 # create schema
@@ -33,8 +40,7 @@ except:
     pass
 
 # load JSON from stdin or file
-sys.argv.pop(0)
-for line in fileinput.input(sys.argv):
+for line in args.infile:
     mydict = json.loads(line)
     id = mydict['id']
     del mydict['id']
